@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+public class dynamicStack {
+
+	private boolean looper = true;
+	private boolean goodName = false;
+	private boolean goodAge = false;
+
+	// arrayStack stack = new arrayStack(10);
+	/**
+	 * public static void main(String[] args) {
+	 * 
+	 * }
+	 * 
+	 * /** scans for input and returns a record or null if it cant get proper result
+	 * which is never gonna happen anyways...
+	 * 
+	 * @return record - (String, Int) pair
+	 */
+	 public stackRecord getRecordIn() {
+
+		Scanner scan = new Scanner(System.in); // Reading from System.in
+
+		while (!(looper == true && goodName == true && goodAge == true)) { // one false loops
+
+			/*--------------------GETTING name-----------------*/
+			// while (!goodName) {
+			System.out.print("Enter a Name: ");
+			String inputName = scan.nextLine();
+			if (!containsDigit(inputName)) {
+				goodName = true;
+			} else {
+				goodName = false;
+			}
+
+			/*--------------------GETTING age------------------*/
+			// while (!goodAge) {
+			System.out.print("Enter an age: ");
+			String inputAge = scan.nextLine(); // Scans the next token of the input as an int.
+			if (!isInteger(inputAge)) {
+				goodAge = true;
+			} else {
+				goodAge = false;
+			}
+
+			/*-------Checking if input is what I'm looking for, (String, Int)------*/
+			if ((looper == true && goodName == true && goodAge == true)) {
+				System.out.println("Good input... ");
+				int intAge = Integer.parseInt(inputAge);
+				stackRecord record = new stackRecord(inputName, intAge);
+				scan.close();
+				return record;
+			} else {
+				System.out.println("Bad input...Try again ");
+
+			}
+			/*----------User input is...-----------*/
+			System.out.println("Name is : " + inputName + " & Age is : " + inputAge);
+
+		} // end of big while
+
+		/*---------------END OF READING----------------*/
+		scan.close();
+		return null;
+
+	} // end of main
+
+	/*---------------------HELPERS------------------------*/
+
+	private static boolean containsDigit(String inputString) {
+		boolean containsDigit = false;
+
+		if (inputString != null && !inputString.isEmpty()) {
+			for (char c : inputString.toCharArray()) {
+				if (containsDigit = Character.isDigit(c)) {
+					break; // if counter a digit in arr of chars
+				}
+			} // end of for-loop
+		}
+
+		return containsDigit;
+	} // end of method
+
+	private static boolean isInteger(String inputString) {
+		boolean isInteger = false;
+
+		if (inputString != null && !inputString.isEmpty()) {
+			for (char c : inputString.toCharArray()) {
+				if (isInteger = !Character.isDigit(c)) {
+					break; // if counter a non digit in arr of chars
+				}
+			} // end of for-loop
+		}
+
+		return isInteger;
+	} // end of method */
+	
+} 
